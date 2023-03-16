@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Atividade 01</h1>
+    <p>Nome Completo:</p>
+    <input type="text" id="nome-completo">
+    <button type="submit" onclick="getNomeCompleto()">>></button>
+
+    <br>
+
+    <p>Nome: </p>
+    <input type="text" id="nome">
+    <p>Sobrenome:</p>
+    <input type="text" id="sobrenome">
+
+    <script>
+        function getNomeCompleto() {
+            let nomeCompleto = document.getElementById("nome-completo").value;
+            // método split para separar o nome
+            let nome = nomeCompleto.split(" ")[0];
+            let sobrenome = nomeCompleto.split(" ")[1];
+
+            // .value para inserir as variaveis no valor do input
+            document.getElementById("nome").value = nome.toUpperCase();
+            document.getElementById("sobrenome").value = sobrenome.toUpperCase();
+        }
+    </script>
+</body>
+</html>
