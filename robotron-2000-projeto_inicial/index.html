@@ -102,6 +102,32 @@
         
     <script>
         let imagePosition = 0;
+        // Get all the elements with class "controle-ajuste"
+        const ajusteBtns = document.querySelectorAll(".controle-ajuste");
+
+        // Loop through each button and add a click event listener
+        for (let i = 0; i < ajusteBtns.length; i++) {
+            ajusteBtns[i].addEventListener("click", function() {
+                // Get the input element and its current value
+                const input = this.parentNode.querySelector(".controle-contador");
+                let value = parseInt(input.value);
+
+                // Update the value based on the button that was clicked
+                if (this.textContent === "+") {
+                if (value < 99) {
+                    value++;
+                }
+                } else if (this.textContent === "-") {
+                if (value > 0) {
+                    value--;
+                }
+                }
+
+                // Update the input element's value
+                input.value = value.toString().padStart(2, "0");
+            });
+        }
+
         function nextColor() {
             const images = ["robotron.png", "robotron-vermelho.png", "robotron-rosa.png", "robotron-preto.png", "robotron-branco.png", "robotron-azul.png", "robotron-amarelo.png"]
             const lastImage = images.length - 1;
