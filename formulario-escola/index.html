@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Escola</title>
+</head>
+<body>
+    <h1>Escola Virtual</h1>
+    <h2>Formulário de Pré-Matrícula</h2>
+    <form>
+      <!--  -->
+      <label>Nome do Aluno:</label><br>
+      <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required><br>
+      <label>Data de Nascimento:</label><br>
+      <input type="date" name="data-nascimento" id="data-nascimento" min="2000-01-01" required><br>
+      <label>Nome da Mãe:</label><br>
+      <input type="text" name="nome-mae" id="nome-mae" placeholder="Digite seu nome" required><br>
+      <label>Nome da Pai:</label><br>
+      <input type="text" name="nome-pai" id="nome-pai" placeholder="Digite seu nome" required><br>
+      <label>Telefone DDD:</label><br>
+      <input type="tel" name="telefone" id="telefone" placeholder="(XX)" required>
+      <label>Tel:</label>
+      <input type="tel" name="telefone" id="telefone" required><br>
+      <label>Email: </label><br>
+      <input type="email" name="email" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="email@gmail.com"required><br>
+
+      <hr>
+
+      <!--  -->
+      <label>Série: </label><br>
+      <select name="serie" id="serie" required>
+        <option value="1">1º Ano</option>
+        <option value="2">2º Ano</option>
+        <option value="3">3º Ano</option>
+        <option value="4">4º Ano</option>
+        <option value="5">5º Ano</option>
+        <option value="6">6º Ano</option>
+        <option value="7">7º Ano</option>
+        <option value="8">8º Ano</option>
+        <option value="9">9º Ano</option>
+      </select><br>
+
+      <label>Turno: </label><br>
+      <select name="turno" id="turno" required>
+        <option value="matutino">Matutino</option>
+        <option value="vespertino">Vespertino</option>
+        <option value="noturno">Noturno</option>
+      </select><br>
+
+      <!-- limit the checkbox of Atividades Extracurriculares to max of 3 -->
+      <label>Atividades Extracurriculares</label><br>
+      <input type="checkbox" name="atividades" id="atividades" value="artes" onclick="limitCheckboxes(this)">Informática<br>
+      <input type="checkbox" name="atividades" id="atividades " value="esportes" onclick="limitCheckboxes(this)">Música<br>
+      <input type="checkbox" name="atividades" id="atividades" value="musica" onclick="limitCheckboxes(this)">Ballet<br>
+      <input type="checkbox" name="atividades" id="atividades" value="informatica" onclick="limitCheckboxes(this)">Artes<br>
+
+      <hr>
+
+      <!--  -->
+      <input type="submit" value="Enviar Formulário">
+      <input type="reset" value="Limpar">
+    </form>
+
+    <script>
+      // Limita a data de nascimento para não ser maior que a data atual
+      var hoje = new Date().toISOString().split("T")[0];
+      document.getElementById("data-nascimento").setAttribute("max", hoje);
+
+
+      function limitCheckboxes(checkbox) {
+        var limit = 3;
+        var checkboxes = document.getElementsByName("atividades");
+        var checkedCount = 0;
+        for (var i = 0; i < checkboxes.length; i++) {
+          // Verifica se o checkbox está marcado e incrementa o contador
+          if (checkboxes[i].checked) {
+            checkedCount++;
+          }
+          if (checkedCount >= limit) {
+            // Verifica os checkbox que não estão marcados e desabilita
+            for (var j = 0; j < checkboxes.length; j++) {
+              if (!checkboxes[j].checked) {
+                checkboxes[j].disabled = true;
+              }
+            }
+          } else {
+            // Habilita todos os checkbox se não atingiu o limite
+            for (var j = 0; j < checkboxes.length; j++) {
+              checkboxes[j].disabled = false;
+            }
+          }
+        }
+      }
+      </script>
+      
+</body>
+</html>
